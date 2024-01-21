@@ -1,12 +1,11 @@
-package com;
 
-import java.util.List;
+import java.util.Map;
 
 public class BillingCounter {
 
-    private List<String,String> shoppingCart = shop.shoppingCart<>();
+    private double billAmount = 0;
 
-    public void calculateBillAmount() {
+    public void calculateBillAmount(Map<String, String> shoppingCart, Map<String, Double> listOfItems) {
         shoppingCart.forEach((name, quantity) -> {
             double quantityRequired = parseQuantity(quantity);
             double price = listOfItems.get(name);
@@ -23,5 +22,9 @@ public class BillingCounter {
             return value;
         }
         return value / 1000;
+    }
+
+    public String displayBill(){
+        return "Total Cost: Rs " + billAmount;
     }
 }
